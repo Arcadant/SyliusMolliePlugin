@@ -22,3 +22,7 @@ winzou_state_machine:
           on: ["ship", "create_and_ship"]
           do: ["@sylius.state_resolver.order_shipping", "resolve"]
           args: ["object.getOrder()"]
+        mollie_shipment_notification:
+          on: [ "ship", "create_and_ship" ]
+          do: [ "@sylius_mollie_plugin.event_listener.shipment_ship_event_listener", "shipAll" ]
+          args: [ "object" ]

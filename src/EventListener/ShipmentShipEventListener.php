@@ -31,12 +31,8 @@ final class ShipmentShipEventListener
         $this->requestStack = $requestStack;
     }
 
-    public function shipAll(GenericEvent $event): void
+    public function shipAll(ShipmentInterface $shipment): void
     {
-        /** @var ?ShipmentInterface $shipment */
-        $shipment = $event->getSubject();
-        Assert::isInstanceOf($shipment, ShipmentInterface::class);
-
         /** @var OrderInterface $order */
         $order = $shipment->getOrder();
         $payment = $order->getLastPayment();

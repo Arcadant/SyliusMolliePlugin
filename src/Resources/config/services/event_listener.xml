@@ -4,10 +4,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
     <services>
         <defaults public="true" />
-        <service id="sylius_mollie_plugin.event_listener.shipment_ship_event_listener" class="SyliusMolliePlugin\EventListener\ShipmentShipEventListener">
+        <service id="sylius_mollie_plugin.event_listener.shipment_ship_event_listener" class="SyliusMolliePlugin\EventListener\ShipmentShipEventListener" public="true">
             <argument type="service" id="sylius_mollie_plugin.mollie_api_client"/>
             <argument type="service" id="request_stack"/>
-            <tag name="kernel.event_listener" event="sylius.shipment.post_ship" method="shipAll"/>
         </service>
         <service id="sylius_mollie_plugin.event_listener.payment_method_logo_upload_listener" class="SyliusMolliePlugin\EventListener\PaymentMethodUploadLogoListener">
             <argument type="service" id="sylius.manager.gateway_config"/>
